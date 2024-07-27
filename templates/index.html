@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Is it FIRE?? 🔥🔥</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
+</head>
+<body>
+    <h1>is it fire?</h1>
+    <form method="post" action="/">
+        <label for="description">Enter your idea:</label><br>
+        <textarea id="description" name="description" rows="4" cols="50"></textarea><br><br>
+        <input type="submit" value="Classify Idea">
+    </form>
+    {% if description %}
+        <h2>Idea:</h2>
+        <p>{{ description }}</p>
+        <h2>Classification:</h2>
+        <p>{{ classification }}</p>
+        {% if show_update %}
+            <form method="post" action="/update">
+                <input type="hidden" name="description" value="{{ description }}">
+                <label for="new_classification">Did i stutter? Fix me.</label><br>
+                <select id="new_classification" name="new_classification">
+                    <option value="fire">Fire 🔥🔥</option>
+                    <option value="not fire">Not Fire</option>
+                </select><br><br>
+                <input type="submit" value="Update Classification">
+            </form>
+        {% endif %}
+    {% endif %}
+</body>
+<footer>made for boreal. credit to winston, kai, ivan, suchir, advil, scott, kevin, micah for helping make the dataset</footer>
+</html>
